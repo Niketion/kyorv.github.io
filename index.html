@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html>
-<head>
-<script>
-function myFunction() {
-document.getElementById('test').innerHTML = "Hello world!"
-}
-</script>
+  <head>
+    <script>
+      function myFunction() {
+        var x = document.getElementById('lname');
 
-</head>
+        document.getElementById('test').innerHTML = x;
+      }
+    </script>
+  </head>
 
-<body>
-<p id="test">Click sul pulsante per visualizzare Alert.</p>
+  <body>
+    <p id="test">Click sul pulsante per visualizzare Alert.</p>
 
-<button onclick="myFunction()">Click</button>
+    <button onclick="myFunction()">Click</button>
 
-</body>
+    <form>
+      <input type="text" id="lname" name="lname"><br>
+      <input type="submit" value="Submit">
+    </form>
+
+  </body>
 </html>
