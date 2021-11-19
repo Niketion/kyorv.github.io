@@ -3,14 +3,14 @@
 <head>
 <script>
 function myFunction() {
-alert("Ciao! Io sono un Alert box!");
+document.getElementById('test').innerHTML = "Hello world!"
 }
 </script>
 
 </head>
 
 <body>
-<p>Click sul pulsante per visualizzare Alert.</p>
+<p id="test">Click sul pulsante per visualizzare Alert.</p>
 
 <button onclick="myFunction()">Click</button>
 
