@@ -1,22 +1,76 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Titolo carino</title>
+    <title>Titolo carinao</title>
   </head>
 
     <script type="text/javascript">
-        var lolz;
+        var amount;
         function onload() {
-            lolz = document.getElementById('lolz');
+            amount = document.getElementById('amount');
         }
+
         function kk(){
-            alert(lolz.value);
+            tableCreate(amount.value)
+        }
+
+        var log = {}
+        function tableCreate(k) {
+          const body = document.body;
+
+          let memberships = k*3;
+          let rebuy = 0;
+          let amount = memberships;
+
+          tbl = document.createElement('table');
+          //tbl.style.width = '100px';
+          //tbl.style.border = '1px solid black';
+
+          for (i=0; i<1200; i++) {
+            let coeff = memberships*0.005/3;
+            let amount_rebuy = 0;
+
+            if (rebuy >= 50) {
+              amount_rebuy = Math.floor(rebuy/50);
+
+              for (j=0; j<amount_rebuy; j++) {
+                rebuy -= 50;
+                memberships += 150;
+                amount += 150;
+              }
+            }
+
+            amount -= coeff;
+
+            const row = tbl.insertRow();
+
+            const t_day = row.insertCell();
+            t_day.appendChild(document.createTextNode(i));
+
+            const t_coeff = row.insertCell();
+            t_coeff.appendChild(document.createTextNode(coeff))
+
+            const t_rebuy = row.insertCell();
+            t_rebuy.appendChild(document.createTextNode(rebuy))
+
+            const t_amount = row.insertCell();
+            t_amount.appendChild(document.createTextNode(amount))
+
+            if (amount_rebuy != 0) {
+              const t_rebuy_done = row.insertCell();
+              t_rebuy_done.appendChild(document.createTextNode(amount_rebuy*50))
+            }
+
+            rebuy += coeff;
+          }
+
+          body.appendChild(tbl);
         }
     </script>
 
     <body onload="onload();">
-        <input type="text" name="enter" class="enter" value="" id="lolz"/>
+        <input type="text" name="enter" class="enter" value="" id="amount"/>
         <input type="button" value="click" onclick="kk();"/>
     </body>
 </html>
